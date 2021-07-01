@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>퀴즈퀴즈</title>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+body{
+font-family: 'Do Hyeon', sans-serif;
+}
+.quizBackground{
+	height: 900px;
+	width: 900px;
+	
+	margin: 20px;
+	
+/* 	border: dashed;
+	border-color: red; */
+	
+	position: relative;
+	float: left;
+}
+.groupPoint{
+	height: 900px;
+	width: 400px;
+	
+	
+/* 	border: dashed;
+	border-color: red; */
+	margin: 20px;
+	position: relative;
+	float: left;
+}
+th{ height: 50px;}
+td{ height: 50px;}
+
+.myGallery {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.myGallery img {
+  width: 100%;
+}
+
+/*
+  And here are some declarations for the image caption.
+  Just hover over one of the last 5 images to see it.
+*/
+
+.myGallery .item {
+  position: relative;
+  overflow: hidden;
+}
+
+.myGallery .item img {
+  vertical-align: middle;
+}
+.quizImage{
+    width: 899px;
+    height: 520px;
+    object-fit: cover
+}
+.myGallery .caption {
+  margin: 0;
+  padding: 1em;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  transition: transform 0.5s;
+  transform: translateY(100%);
+  background: rgba(0, 0, 0, 0.7);
+  color: rgb(255, 255, 255);
+}
+
+.myGallery .item:hover .caption {
+  transform: translateY(0%);
+}
+
+
+
+h1,
+p {
+  text-align: center;
+}
+
+.myGallery {
+  font-size: 1rem;
+}
+
+#container {
+	width: 325px;
+    float: left;
+    position: relative;
+}
+
+#player1 {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+}
+#player1 h1,
+#player2 h1 {
+  font-size: 60px;
+  color: white;
+  line-height: 100px;
+}
+
+#player2 {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.scoreblock {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 15px;
+  color: white;
+  position: relative;
+  float: left;
+  font-size: 100px;
+  line-height: 150px;
+  list-style: none;
+ 
+  margin: 0 10px;
+
+  height: 150px;
+}
+
+.minus:hover,
+.plus:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.minus:active,
+.plus:active {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+</style>
+
+</head>
+<body>
+
+
+<h1>퀴즈퀴즈</h1>
+
+<div class="quizBackground">
+
+<div class="myGallery">
+  <div class="item">
+   <img class="quiz" quizNum="qOne" src="https://picsum.photos/190/190?1" />
+    <span class="caption">5점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="qTwo" src="https://picsum.photos/190/190?2" />
+    <span class="caption">3점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="qThree" src="https://picsum.photos/190/190?3" />
+    <span class="caption">5점</span>
+  </div>
+  <div class="item">
+    <img  class="quiz" quizNum="qFour" src="https://picsum.photos/190/190?4" />
+    <span class="caption">2점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="qFive" src="https://picsum.photos/190/190?5" />
+    <span class="caption">3점</span>
+  </div>
+    <div class="item">
+    <img class="quiz" quizNum="qSix" src="https://picsum.photos/190/190?11" />
+    <span class="caption">5점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="qSeven" src="https://picsum.photos/190/190?12" />
+    <span class="caption">6점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="qEight" src="https://picsum.photos/190/190?13" />
+    <span class="caption">7점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="qNine" src="https://picsum.photos/190/190?14" />
+    <span class="caption">2점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="qTen" src="https://picsum.photos/190/190?15" />
+    <span class="caption">9점</span>
+  </div>
+    <div class="item">
+    <img class="quiz" quizNum="q11" src="https://picsum.photos/190/190?21" />
+    <span class="caption">1점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="q12" src="https://picsum.photos/190/190?22" />
+    <span class="caption">2점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="q13" src="https://picsum.photos/190/190?23" />
+    <span class="caption">5점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="q14" src="https://picsum.photos/190/190?24" />
+    <span class="caption">3점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="q15" src="https://picsum.photos/190/190?25" />
+    <span class="caption">2점</span>
+  </div>
+    <div class="item">
+    <img class="quiz" quizNum="q16" src="https://picsum.photos/190/190?6" />
+    <span class="caption">4점</span>
+  </div>
+  <div class="item">
+    <img  class="quiz" quizNum="q17" src="https://picsum.photos/190/190?7" />
+    <span class="caption">10점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="q18" src="https://picsum.photos/190/190?8" />
+    <span class="caption">5점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="q19" src="https://picsum.photos/190/190?9" />
+    <span class="caption">3점</span>
+  </div>
+  <div class="item">
+    <img class="quiz" quizNum="q20" src="https://picsum.photos/190/190?10" />
+    <span class="caption">10점</span>
+  </div>
+    <div class="item">
+    <img class="quiz" quizNum="q21" src="https://picsum.photos/190/190?16" />
+    <span class="caption">2점</span>
+  </div>
+    <div class="item">
+    <img class="quiz" quizNum="q22" src="https://picsum.photos/190/190?17" />
+    <span class="caption">5점</span>
+  </div>
+    <div class="item">
+    <img class="quiz" quizNum="q23" src="https://picsum.photos/190/190?18" />
+    <span class="caption">3점</span>
+  </div>
+    <div class="item">
+    <img class="quiz" quizNum="q24" src="https://picsum.photos/190/190?19" />
+    <span class="caption">10점</span>
+  </div>
+    <div class="item">
+    <img class="quiz" quizNum="q25" src="https://picsum.photos/190/190?20" />
+    <span class="caption">3점</span>
+  </div>
+
+</div>
+
+
+</div>
+
+
+ <div id = "container">
+    
+    <div id = "player1">
+      <div id="p1score">
+        <h1>Player 1</h1>
+        <ul>
+          <li class="scoreblock minus" onclick="minusOne(score1)">-</li>
+          <li id="p120" class="scoreblock" value=0></li>
+          <li class="scoreblock plus" onclick="addOne(score1)">+</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div id = "player2">
+      <div id="p2score">
+       <h1>Player 2</h1>       
+       <ul>
+         <li class="scoreblock minus" onclick="minusOne(score2)">-</li>
+         <li id="p220" class="scoreblock" value=0></li>
+         <li class="scoreblock plus" onclick="addOne(score2)">+</li>
+       </ul>
+     </div>
+    </div>
+    
+    <div id = "player1">
+      <div id="p1score">
+        <h1>Player 3</h1>
+        <ul>
+          <li class="scoreblock minus" onclick="minusOne(score3)">-</li>
+          <li id="p320" class="scoreblock" value=0></li>
+          <li class="scoreblock plus" onclick="addOne(score3)">+</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div id = "container">
+    
+    <div id = "player1">
+      <div id="p1score">
+        <h1>Player 4</h1>
+        <ul>
+          <li class="scoreblock minus" onclick="minusOne(score4)">-</li>
+          <li id="p420" class="scoreblock" value=0></li>
+          <li class="scoreblock plus" onclick="addOne(score4)">+</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div id = "player2">
+      <div id="p2score">
+       <h1>Player 5</h1>       
+       <ul>
+         <li class="scoreblock minus" onclick="minusOne(score5)">-</li>
+         <li id="p520" class="scoreblock" value=0></li>
+         <li class="scoreblock plus" onclick="addOne(score5)">+</li>
+       </ul>
+     </div>
+    </div>
+    
+    <div id = "player1">
+      <div id="p1score">
+        <h1>Player 6</h1>
+        <ul>
+          <li class="scoreblock minus" onclick="minusOne(score6)">-</li>
+          <li id="p620" class="scoreblock" value=0></li>
+          <li class="scoreblock plus" onclick="addOne(score6)">+</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<!-- large modal -->
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="width: 1000px;">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel"></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3 class="quizTitle"></h3>
+        <img class="quizImage" src="">
+    
+	<br><button id="showAnswer1">정답</button>
+	<br><input type="text" id="answer1" value="" style="display:none; width:600px;"> 
+    
+    <input type="hidden" class="point" value="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="closeQuiz"class="btn btn-default">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+let pcVal;
+
+var score1 = document.getElementById("p120");
+var score2 = document.getElementById("p220");
+var score3 = document.getElementById("p320");
+var score4 = document.getElementById("p420");
+var score5 = document.getElementById("p520");
+var score6 = document.getElementById("p620");
+score1.innerHTML = score1.value;
+score2.innerHTML = score2.value;
+score3.innerHTML = score3.value;
+score4.innerHTML = score1.value;
+score5.innerHTML = score2.value;
+score6.innerHTML = score3.value;
+function addOne (score) {
+  score.value++;
+  
+  score.innerHTML = score.value;
+}
+
+function minusOne (score) {
+ score.value--;
+  score.innerHTML = score.value;
+}
+
+
+
+$(document).ready(function(){
+	
+	
+$(".quiz").click(function(){
+	$("#largeModal").modal('show');
+	pcVal = $(this).attr('quizNum');
+	if (pcVal == 'qOne'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당 장면의 명대사는?');
+		$('.quizImage').attr('src', 'https://mblogthumb-phinf.pstatic.net/MjAxNzAxMDZfMTYy/MDAxNDgzNjMwMTA5MjQz.IZ9Qq0SN3HACv9UYwDoXZeY7es46992UusI-oID7CmAg.YFzaKWFpIUWpW176P9S8tvFlYJxfRgnQ_CnHwjZNub4g.JPEG.ynssong03/Screenshot_20170105-235643.jpg?type=w800');
+		
+		$('#answer1').val('날이 좋아서 날이 좋지 않아서 날이 적당해서 모든 날이 좋았다');
+	}
+	if (pcVal=='qTwo'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당 장면의 명대사는?');
+		$('.quizImage').attr('src', 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F26Sp8%2FbtqBikRbrL1%2FzX96RU9MFMif320SRe5Xlk%2Fimg.jpg');
+		
+		$('#answer1').val('실례지만,,, 어데 최씨입니끼?');
+	}
+	if (pcVal=='qThree'){
+		$('.modal-title').text('세계사');
+		$('.quizTitle').text('1392년 조선건국.. 1592년 임진왜란... 그럼 1492년엔 어떤 일이..?');
+		$('.quizImage').attr('src', 'https://images.pexels.com/photos/847147/pexels-photo-847147.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+		
+		$('#answer1').val('콜럼버스의 아메리카 대륙 발견');
+	}
+	if (pcVal=='qFour'){
+		$('.modal-title').text('넌센스..');
+		$('.quizTitle').text('인터넷에서 가장 많이 볼 수 있는 색은..?');
+		$('.quizImage').attr('src', 'https://images.anandtech.com/doci/16078/Browsers_678x452.png');
+		
+		$('#answer1').val('검색..');
+	}
+	if (pcVal=='qFive'){
+		$('.modal-title').text('넌센스..');
+		$('.quizTitle').text('지코가 좋아 하는 섬은?...');
+		$('.quizImage').attr('src', 'https://img3.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/25/newsade/20210525031421880utdn.jpg');
+		
+		$('#answer1').val('왜들그리다운돼있섬 ....');
+	}
+	if (pcVal=='qSix'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당 장면의 대사는..?');
+		$('.quizImage').attr('src', 'https://cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/FTNGNK63ALU6VSBMMYJN4LKC74.jpg');
+		
+		$('#answer1').val('묻고 더블로 가!');
+	}
+	if (pcVal=='qSeven'){
+		$('.modal-title').text('해당 대사 다음의 대사는...?');
+		$('.quizTitle').text('러부가 무엇이오?..헌데 그건 왜 묻는 거요? 하고 싶어 그러오. 벼슬보다 좋은 거라 하더이다. 뭐 생각하기에 따라서는…. 헌데 혼자는 못하오. 함께 할 상대가 있어야 하지. 그럼 나랑 같이 하지 않겠소? 아녀자라 그러오? 내 총도 쏘는데.');
+		$('.quizImage').attr('src', 'https://post-phinf.pstatic.net/MjAyMDAyMjRfNjUg/MDAxNTgyNTIzMDg0OTI3.ZTOJq9tgjMBpyjEnbaGvpLxVYDnuZLSAUpxRBAlogo4g.eof_LYdUJNwPImvDpLsyxD-k4G94yChMsazRiltOyccg.PNG/%EB%9F%AC%EB%B8%8C%EA%B0%80_%EB%AC%B4%EC%97%87%EC%9D%B4%EC%98%A4.PNG?type=w1200');
+		
+		$('#answer1').val('총 쏘는 것보다 더 어렵고, 그보다 더 위험하고, 그보다 더 뜨거워야 하오.');
+	}
+	if (pcVal=='qEight'){
+		$('.modal-title').text('^^;');
+		$('.quizTitle').text('2021 우리교회 청년공동체의 교육주제는??');
+		$('.quizImage').attr('src', 'https://images-na.ssl-images-amazon.com/images/I/51OaP4M6ZyL.jpg');
+		
+		$('#answer1').val('교회가 교회되게!');
+	}
+	if (pcVal=='qNine'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당 장면의 대사는..?');
+		$('.quizImage').attr('src', 'https://i.ytimg.com/vi/zHgcj3Ix2CE/maxresdefault.jpg');
+		
+		$('#answer1').val('자 드가자!');
+	}
+	if (pcVal=='qTen'){
+		$('.modal-title').text('목사님..');
+		$('.quizTitle').text('정의준 목사님이 입버릇 처럼 자주 하는 말은..?');
+		$('.quizImage').attr('src', 'https://i.ytimg.com/vi/oVOEOYWurfQ/hqdefault.jpg');
+		
+		$('#answer1').val('그거슨');
+	}
+	if (pcVal=='q11'){
+		$('.modal-title').text('짤방');
+		$('.quizTitle').text('해당 짤의 다음에 나올 말은..?');
+		$('.quizImage').attr('src', 'https://dispatch.cdnser.be/wp-content/uploads/2017/12/20171223144318_1.gif');
+		
+		$('#answer1').val('형이 왜 거기서 나와..?');
+	}
+	if (pcVal=='q12'){
+		$('.modal-title').text('문학');
+		$('.quizTitle').text('영국의 가장 위대한 소설 중 하나, 18~19세기의 영국이 배경, 총 6번 영화화 되었다.., 주인공은 엘리자베스 베넷');
+		$('.quizImage').attr('src', 'https://mblogthumb-phinf.pstatic.net/20151106_290/teiie2_1446789194385ALYE9_JPEG/24352345.jpg?type=w2');
+		
+		$('#answer1').val('오만과 편견');
+	}
+	if (pcVal=='q13'){
+		$('.modal-title').text('인물');
+		$('.quizTitle').text('프랑스의 작곡가 이며 피아니스트, 동양 음악과 인상주의의 영향을 받아 인상주의 (인상파)음악의 대표적인 인물..달빛...');
+		$('.quizImage').attr('src', 'http://img.khan.co.kr/newsmaker/1168/20160322_68.jpg');
+		
+		$('#answer1').val('클로드 드뷔시');
+	}
+	if (pcVal=='q14'){
+		$('.modal-title').text('인물');
+		$('.quizTitle').text('해당인물의 풀네임은?');
+		$('.quizImage').attr('src', 'https://i.ytimg.com/vi/r89xSf4PkFw/maxresdefault.jpg');
+		
+		$('#answer1').val('하이브리드샘이솟아리오레이비');
+	}
+	if (pcVal=='q15'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당장면의 명대사는?');
+		$('.quizImage').attr('src', 'https://img.hani.co.kr/imgdb/resize/2015/0904/00539136601_20150904.JPG');
+		
+		$('#answer1').val('나 여기 아트박스 사장인데');
+	}
+	if (pcVal=='q16'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당장면의 대사는?');
+		$('.quizImage').attr('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfgLlHkwx7FPx0b41q8I6ksAkc4lIr1Azp1xwDJZBdqzs3HXUTwHWBBuZsnki-qd7Kf58&usqp=CAU');
+		
+		$('#answer1').val('사딸라');
+	}
+	if (pcVal=='q17'){
+		$('.modal-title').text('아이큐!');
+		$('.quizTitle').text('다음문제의 답은?');
+		$('.quizImage').attr('src', 'https://t1.daumcdn.net/cfile/tistory/23716B475970777638');
+		
+		$('#answer1').val('ONE WORD');
+	}
+	if (pcVal=='q18'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당장면의 명대사와 드라마 제목은?');
+		$('.quizImage').attr('src', 'https://mblogthumb-phinf.pstatic.net/20110601_186/price_queen_1306891310212FIMsk_GIF/only0001.gif?type=w2');
+		
+		$('#answer1').val('극복/최고의 사랑');
+	}
+	if (pcVal=='q19'){
+		$('.modal-title').text('음악');
+		$('.quizTitle').text('다음의 가사에 해당하는  가수와 곡은?');
+		$('.quizImage').attr('src', 'https://ih1.redbubble.net/image.1579551940.6086/flat,750x,075,f-pad,750x1000,f8f8f8.jpg');
+		
+		$('#answer1').val('방탄소년단 / dynamite');
+	}
+	if (pcVal=='q20'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당 장면의 대사와 드라마 제목은?');
+		$('.quizImage').attr('src', 'https://img.insight.co.kr/static/2017/05/31/700/c247j3h4136wg22p3pd5.jpg');
+		
+		$('#answer1').val('쌈 마이웨이 / 너 심쿵했냐?');
+	}
+	if (pcVal=='q21'){
+		$('.modal-title').text('등장인물');
+		$('.quizTitle').text('해당 포스터 속 인물들의 극중 이름은?');
+		$('.quizImage').attr('src', 'https://upload.wikimedia.org/wikipedia/ko/a/a9/%ED%83%80%EC%A7%9C_%28%EC%98%81%ED%99%94%29.jpg');
+		
+		$('#answer1').val('고니 / 정 마담 / 평 경장 / 고광렬');
+	}
+	if (pcVal=='q22'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당 장면의 대사와 영화제목.. 대사는 리듬정확히..');
+		$('.quizImage').attr('src', 'https://coinpan.com/files/attach/images/917052/238/874/184/dd0397374decb985980226c5263ced27.jpg');
+		
+		$('#answer1').val('엑시트 / 따따따 따 따 따 따따따');
+	}
+	if (pcVal=='q23'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당 장면의 대사와 영화 제목은?');
+		$('.quizImage').attr('src', 'https://img.insight.co.kr/static/2019/02/01/700/u1q9k4nu6iz0oc61703h.jpg');
+		
+		$('#answer1').val('극한직업 / 지금까지 이런 맛은 없었다, 이것은 갈비인가 통닭인가.. ');
+	}
+	if (pcVal=='q24'){
+		$('.modal-title').text('명장면 명대사');
+		$('.quizTitle').text('해당 장면의 대사와 극중인물의 이름 그리고 이 사람의 아버지는? ');
+		$('.quizImage').attr('src', 'https://gif.fmkorea.com/files/attach/new/20170417/486616/403814545/630009251/15ee725d4be045407198009046b5fddd.gif');
+		
+		$('#answer1').val('내가 왕이 될 상인가?  / 수양대군 / 세종대왕 ');
+	}	
+	if (pcVal=='q25'){
+		$('.modal-title').text('상식..');
+		$('.quizTitle').text('제헌절은 7월 17일 이다. 그 이유는?');
+		$('.quizImage').attr('src', 'https://mblogthumb-phinf.pstatic.net/20160714_186/hl7060_1468481646555WIIvR_JPEG/%C1%A6%C7%E5%C0%FD_2.jpg?type=w2');
+		
+		$('#answer1').val(' "조선 건국일"인 7월17일에 맞추어 헌법이 공포되었기 때문에..');
+	}
+});
+
+
+$("#showAnswer1").click(function(){
+	$('#answer1').show();
+});	
+	
+$('#closeQuiz').click(function(){
+	$('#answer1').hide();
+	$("#largeModal").modal('hide');
+});	
+	
+	
+	
+});	
+
+
+
+
+
+</script>
+
+</body>
+</html>
